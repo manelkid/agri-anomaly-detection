@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+venv/
+*.log
+
+# MLflow (généré localement, pas besoin de le versionner)
+mlruns/
+mlartifacts/
+
+# NOTE : les fichiers dans artefacts/ (model.pt, seuils.json, donnees_parcelles_2023.csv)
+# sont volontairement gardés dans Git -> l'API en a besoin au moment du build Docker.

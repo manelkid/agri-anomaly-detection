@@ -1,0 +1,26 @@
+{
+  "mean_test": 0.5002471208572388,
+  "std_test": 0.3204350769519806,
+  "z_seuil": 2.0,
+  "hidden_dim": 64,
+  "latent_dim": 16,
+  "indicateurs": [
+    "NDVI",
+    "EVI",
+    "NDMI"
+  ],
+  "stats_globales": {
+    "NDVI": {
+      "moyenne": 0.36289753538513664,
+      "ecart_type": 0.22798848306282457
+    },
+    "EVI": {
+      "moyenne": 0.25622273084917735,
+      "ecart_type": 0.18300255754662967
+    },
+    "NDMI": {
+      "moyenne": -0.013739132362634103,
+      "ecart_type": 0.20480532546369065
+    }
+  }
+}
