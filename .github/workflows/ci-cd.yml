@@ -1,0 +1,60 @@
+name: CI/CD - Build et test de l'API
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-et-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Construire l'image Docker
+        run: docker build -t agri-anomaly-api .
+
+      - name: Lancer le conteneur
+        run: docker run -d -p 8000:8000 --name test-api agri-anomaly-api
+
+      - name: Attendre que l'API démarre
+        run: sleep 10
+
+      - name: Vérifier /health
+        run: |
+          reponse=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/health)
+          echo "Code de réponse /health : $reponse"
+          if [ "$reponse" != "200" ]; then
+            echo "L'API n'a pas répondu correctement"
+            docker logs test-api
+            exit 1
+          fi
+
+      - name: Vérifier /model-info
+        run: |
+          reponse=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/model-info)
+          echo "Code de réponse /model-info : $reponse"
+          if [ "$reponse" != "200" ]; then
+            exit 1
+          fi
+
+      - name: Arrêter le conteneur
+        if: always()
+        run: docker stop test-api && docker rm test-api
+
+      - name: Connexion à GitHub Container Registry
+        if: github.ref == 'refs/heads/main'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pousser l'image vers ghcr.io
+        if: github.ref == 'refs/heads/main'
+        run: |
+          docker tag agri-anomaly-api ghcr.io/${{ github.repository_owner }}/agri-anomaly-api:latest
+          docker push ghcr.io/${{ github.repository_owner }}/agri-anomaly-api:latest
