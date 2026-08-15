@@ -10,27 +10,6 @@ jobs:
   build-et-test:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Récupérer le code
-        uses: actions/checkout@v4
-
-      - name: Construire l'image Docker
-        run: docker build -t agri-anomaly-api .
-
-      - name: Lancer le conteneur
-        run: docker run -d -p 8000:8000 --name test-api agri-anomaly-api
-name: CI/CD - Build et test de l'API
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
-jobs:
-  build-et-test:
-    runs-on: ubuntu-latest
-
     permissions:
       contents: read
       packages: write
@@ -63,6 +42,7 @@ jobs:
           reponse=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/model-info)
           echo "Code de réponse /model-info : $reponse"
           if [ "$reponse" != "200" ]; then
+            docker logs test-api
             exit 1
           fi
 
