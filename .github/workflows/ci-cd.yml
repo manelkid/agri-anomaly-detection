@@ -19,6 +19,31 @@ jobs:
 
       - name: Lancer le conteneur
         run: docker run -d -p 8000:8000 --name test-api agri-anomaly-api
+name: CI/CD - Build et test de l'API
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-et-test:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Construire l'image Docker
+        run: docker build -t agri-anomaly-api .
+
+      - name: Lancer le conteneur
+        run: docker run -d -p 8000:8000 --name test-api agri-anomaly-api
 
       - name: Attendre que l'API démarre
         run: sleep 10
