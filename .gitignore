@@ -11,3 +11,6 @@ mlartifacts/
 
 # NOTE : les fichiers dans artefacts/ (model.pt, seuils.json, donnees_parcelles_2023.csv)
 # sont volontairement gardés dans Git -> l'API en a besoin au moment du build Docker.
+.terraform/
+*.tfstate
+*.tfstate.*
