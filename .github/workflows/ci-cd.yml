@@ -1,4 +1,4 @@
-name: CI/CD - Build et test de l'API
+name: CI/CD - Agri Anomaly Detection
 
 on:
   push:
@@ -7,8 +7,218 @@ on:
     branches: [main]
 
 jobs:
-  build-et-test:
+
+  # ============================================================
+  # 1. TEST API
+  # ============================================================
+  test-api:
+    name: Test API
     runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Construire l'image API
+        run: |
+          docker build \
+            -t agri-anomaly-api \
+            -f api/Dockerfile \
+            .
+
+      - name: Lancer l'API
+        run: |
+          docker run -d \
+            -p 8000:8000 \
+            --name test-api \
+            agri-anomaly-api
+
+      - name: Attendre le démarrage de l'API
+        run: sleep 10
+
+      - name: Vérifier /health
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" \
+            http://localhost:8000/health)
+
+          echo "Code /health : $response"
+
+          if [ "$response" != "200" ]; then
+            echo "❌ L'API ne répond pas correctement"
+            docker logs test-api
+            exit 1
+          fi
+
+      - name: Vérifier /model-info
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" \
+            http://localhost:8000/model-info)
+
+          echo "Code /model-info : $response"
+
+          if [ "$response" != "200" ]; then
+            echo "❌ /model-info a échoué"
+            docker logs test-api
+            exit 1
+          fi
+
+      - name: Vérifier /parcelles
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" \
+            http://localhost:8000/parcelles)
+
+          echo "Code /parcelles : $response"
+
+          if [ "$response" != "200" ]; then
+            echo "❌ /parcelles a échoué"
+            docker logs test-api
+            exit 1
+          fi
+
+      - name: Afficher les logs en cas d'erreur
+        if: failure()
+        run: docker logs test-api
+
+      - name: Nettoyer
+        if: always()
+        run: |
+          docker stop test-api || true
+          docker rm test-api || true
+
+
+  # ============================================================
+  # 2. TEST FRONTEND
+  # ============================================================
+  test-frontend:
+    name: Test Frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Construire l'image Frontend
+        run: |
+          docker build \
+            -t agri-anomaly-frontend \
+            -f frontend/Dockerfile \
+            .
+
+      - name: Lancer le frontend
+        run: |
+          docker run -d \
+            -p 8080:8080 \
+            --name test-frontend \
+            agri-anomaly-frontend
+
+      - name: Attendre le démarrage
+        run: sleep 3
+
+      - name: Vérifier le frontend
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" \
+            http://localhost:8080)
+
+          echo "Code frontend : $response"
+
+          if [ "$response" != "200" ]; then
+            echo "❌ Le frontend ne répond pas"
+            docker logs test-frontend
+            exit 1
+          fi
+
+      - name: Nettoyer
+        if: always()
+        run: |
+          docker stop test-frontend || true
+          docker rm test-frontend || true
+
+
+  # ============================================================
+  # 3. VALIDATION COPERNICUS
+  # ============================================================
+  validate-copernicus:
+    name: Validation Copernicus
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer les dépendances Copernicus
+        run: |
+          pip install -r copernicus/requirements.txt
+
+      - name: Vérifier la syntaxe Python
+        run: |
+          python -m compileall copernicus
+
+      - name: Vérifier les scripts
+        run: |
+          python -m py_compile copernicus/copernicus_extraction.py
+          python -m py_compile copernicus/completer_donnees.py
+          python -m py_compile copernicus/comparer_sources.py
+          python -m py_compile copernicus/generer_donnees_frontend.py
+
+
+  # ============================================================
+  # 4. BUILD DOCKER COMPLET
+  # ============================================================
+  build-images:
+    name: Build Docker Images
+    runs-on: ubuntu-latest
+
+    needs:
+      - test-api
+      - test-frontend
+      - validate-copernicus
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Build API
+        run: |
+          docker build \
+            -t agri-anomaly-api \
+            -f api/Dockerfile \
+            .
+
+      - name: Build Frontend
+        run: |
+          docker build \
+            -t agri-anomaly-frontend \
+            -f frontend/Dockerfile \
+            .
+
+      - name: Build Copernicus
+        run: |
+          docker build \
+            -t agri-anomaly-copernicus \
+            -f copernicus/Dockerfile \
+            .
+
+      - name: Vérifier les images
+        run: |
+          docker images | grep agri-anomaly
+
+
+  # ============================================================
+  # 5. PUSH GHCR
+  # ============================================================
+  push-images:
+    name: Push vers GitHub Container Registry
+    runs-on: ubuntu-latest
+
+    needs:
+      - build-images
+
+    if: github.ref == 'refs/heads/main'
 
     permissions:
       contents: read
@@ -18,48 +228,39 @@ jobs:
       - name: Récupérer le code
         uses: actions/checkout@v4
 
-      - name: Construire l'image Docker
-        run: docker build -t agri-anomaly-api .
-
-      - name: Lancer le conteneur
-        run: docker run -d -p 8000:8000 --name test-api agri-anomaly-api
-
-      - name: Attendre que l'API démarre
-        run: sleep 10
-
-      - name: Vérifier /health
-        run: |
-          reponse=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/health)
-          echo "Code de réponse /health : $reponse"
-          if [ "$reponse" != "200" ]; then
-            echo "L'API n'a pas répondu correctement"
-            docker logs test-api
-            exit 1
-          fi
-
-      - name: Vérifier /model-info
-        run: |
-          reponse=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/model-info)
-          echo "Code de réponse /model-info : $reponse"
-          if [ "$reponse" != "200" ]; then
-            docker logs test-api
-            exit 1
-          fi
-
-      - name: Arrêter le conteneur
-        if: always()
-        run: docker stop test-api && docker rm test-api
-
-      - name: Connexion à GitHub Container Registry
-        if: github.ref == 'refs/heads/main'
+      - name: Login GHCR
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Pousser l'image vers ghcr.io
-        if: github.ref == 'refs/heads/main'
+      - name: Build et Push API
         run: |
-          docker tag agri-anomaly-api ghcr.io/${{ github.repository_owner }}/agri-anomaly-api:latest
-          docker push ghcr.io/${{ github.repository_owner }}/agri-anomaly-api:latest
+          docker build \
+            -t ghcr.io/${{ github.repository_owner }}/agri-anomaly-api:latest \
+            -f api/Dockerfile \
+            .
+
+          docker push \
+            ghcr.io/${{ github.repository_owner }}/agri-anomaly-api:latest
+
+      - name: Build et Push Frontend
+        run: |
+          docker build \
+            -t ghcr.io/${{ github.repository_owner }}/agri-anomaly-frontend:latest \
+            -f frontend/Dockerfile \
+            .
+
+          docker push \
+            ghcr.io/${{ github.repository_owner }}/agri-anomaly-frontend:latest
+
+      - name: Build et Push Copernicus
+        run: |
+          docker build \
+            -t ghcr.io/${{ github.repository_owner }}/agri-anomaly-copernicus:latest \
+            -f copernicus/Dockerfile \
+            .
+
+          docker push \
+            ghcr.io/${{ github.repository_owner }}/agri-anomaly-copernicus:latest

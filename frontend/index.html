@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Comparaison GEE vs Copernicus - Béja</title>
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1976D2, #2196F3);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,.1);
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 16px;
+        }
+
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+
+            display: flex;
+            gap: 20px;
+            align-items: center;
+
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        select {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            min-width: 220px;
+        }
+
+        .stats {
+            margin-left: auto;
+            display: flex;
+            gap: 20px;
+        }
+
+        .stats strong {
+            color: #1976D2;
+            font-size: 18px;
+        }
+
+        #map {
+            width: 100%;
+            height: 700px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,.2);
+        }
+
+        .legend {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+
+            background: white;
+            padding: 15px;
+
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,.2);
+
+            z-index: 1000;
+            max-width: 260px;
+        }
+
+        .legend h3 {
+            margin-bottom: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+
+        .leaflet-popup-content {
+            min-width: 350px;
+        }
+
+        .popup-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1976D2;
+
+            border-bottom: 2px solid #2196F3;
+
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .popup-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .popup-col {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .popup-badge {
+            display: inline-block;
+
+            padding: 4px 10px;
+            border-radius: 4px;
+
+            font-size: 12px;
+            font-weight: bold;
+
+            color: white;
+        }
+
+        .badge-normal {
+            background: #4CAF50;
+        }
+
+        .badge-anomalie {
+            background: #F44336;
+        }
+
+        .badge-accord {
+            background: #4CAF50;
+        }
+
+        .badge-divergence {
+            background: #FF9800;
+        }
+
+        .badge-divergence-forte {
+            background: #F44336;
+        }
+
+        .info-zone {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .info-zone strong {
+            color: #1976D2;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>🌾 Comparaison des sources satellite - Béja</h1>
+
+        <p>
+            Validation croisée :
+            Google Earth Engine vs Copernicus Data Space
+        </p>
+    </header>
+
+
+    <div class="controls">
+
+        <div class="control-group">
+
+            <label>Mode d'affichage :</label>
+
+            <select id="mode-selector">
+
+                <option value="comparaison">
+                    🔍 Comparaison (Accord/Divergence)
+                </option>
+
+                <option value="gee">
+                    🛰️ Google Earth Engine uniquement
+                </option>
+
+                <option value="copernicus">
+                    🌍 Copernicus uniquement
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="control-group">
+
+            <label>Filtrer :</label>
+
+            <select id="filter-selector">
+
+                <option value="all">
+                    Toutes les parcelles
+                </option>
+
+                <option value="accord">
+                    ✅ Accord uniquement
+                </option>
+
+                <option value="divergence">
+                    ⚠️ Divergences uniquement
+                </option>
+
+                <option value="anomalies">
+                    🔴 Anomalies uniquement
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="stats">
+
+            <span>
+                📊 Total :
+                <strong id="stat-total">0</strong>
+            </span>
+
+            <span>
+                ✅ Accord :
+                <strong id="stat-accord">0%</strong>
+            </span>
+
+            <span>
+                ⚠️ Divergences :
+                <strong id="stat-divergence">0</strong>
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div id="zone-info" class="info-zone">
+        📍 Délégation sélectionnée :
+        <strong id="zone-name">-</strong>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        Parcelles :
+        <strong id="zone-count">0</strong>
+    </div>
+
+
+    <div id="map"></div>
+
+
+    <div class="legend">
+
+        <h3>Légende</h3>
+
+        <div id="legend-content"></div>
+
+    </div>
+
+</div>
+
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+<script>
+
+    // ============================================================
+    // CARTE
+    // ============================================================
+
+    const map = L.map('map').setView(
+        [36.7256, 9.1856],
+        10
+    );
+
+
+    L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 18
+        }
+    ).addTo(map);
+
+
+    // ============================================================
+    // VARIABLES
+    // ============================================================
+
+    let parcelles = [];
+
+    let zonesGeoJSON = null;
+
+    let zonesLayer = null;
+
+    let parcellesLayer = L.layerGroup().addTo(map);
+
+    let zoneActive = null;
+
+
+    // ============================================================
+    // CHARGEMENT DES DONNÉES
+    // ============================================================
+
+    Promise.all([
+
+        fetch('data/resultats.json')
+            .then(response => {
+
+                if (!response.ok) {
+                    throw new Error(
+                        'Impossible de charger resultats.json'
+                    );
+                }
+
+                return response.json();
+
+            }),
+
+        fetch('data/Beja_delegations.geojson')
+            .then(response => {
+
+                if (!response.ok) {
+                    throw new Error(
+                        'Impossible de charger Beja_delegations.geojson'
+                    );
+                }
+
+                return response.json();
+
+            })
+
+    ])
+
+    .then(([dataParcelles, dataZones]) => {
+
+        console.log(
+            "Parcelles chargées :",
+            dataParcelles.length
+        );
+
+        console.log(
+            "GeoJSON délégations :",
+            dataZones
+        );
+
+        parcelles = dataParcelles;
+
+        zonesGeoJSON = dataZones;
+
+
+        afficherZones();
+
+
+        mettreAJourStats();
+
+        mettreAJourLegende();
+
+    })
+
+    .catch(error => {
+
+        console.error(error);
+
+        alert(
+            "Erreur de chargement des données.\n\n" +
+            error.message
+        );
+
+    });
+
+
+    // ============================================================
+    // AFFICHER LES DÉLÉGATIONS
+    // ============================================================
+
+    function afficherZones() {
+
+        zonesLayer = L.geoJSON(
+            zonesGeoJSON,
+            {
+
+                style: function() {
+
+                    return {
+
+                        color: '#1f4e8c',
+
+                        weight: 1,
+
+                        fillColor: '#1f4e8c',
+
+                        fillOpacity: 0.02
+
+                    };
+
+                },
+
+
+                onEachFeature: function(
+                    feature,
+                    layer
+                ) {
+
+                    // ------------------------------------------------
+                    // RÉCUPÉRATION DU NOM DE LA DÉLÉGATION
+                    // ------------------------------------------------
+
+                    const props =
+                        feature.properties || {};
+
+
+                    console.log(
+                        "Propriétés zone :",
+                        props
+                    );
+
+
+                    const nomZone =
+                        obtenirNomZone(props);
+
+
+                    layer.bindTooltip(
+                        nomZone,
+                        {
+                            sticky: true
+                        }
+                    );
+
+
+                    // ------------------------------------------------
+                    // SURVOL
+                    // ------------------------------------------------
+
+                    layer.on(
+                        'mouseover',
+                        function(e) {
+
+                            if (
+                                zoneActive !== layer
+                            ) {
+
+                                e.target.setStyle({
+
+                                    fillOpacity: 0.08,
+
+                                    weight: 2
+
+                                });
+
+                            }
+
+                        }
+                    );
+
+
+                    layer.on(
+                        'mouseout',
+                        function(e) {
+
+                            if (
+                                zoneActive !== layer
+                            ) {
+
+                                e.target.setStyle({
+
+                                    fillOpacity: 0.02,
+
+                                    weight: 1
+
+                                });
+
+                            }
+
+                        }
+                    );
+
+
+                    // ------------------------------------------------
+                    // CLIC
+                    // ------------------------------------------------
+
+                    layer.on(
+                        'click',
+                        function(e) {
+
+                            console.log(
+                                "Clic délégation :",
+                                nomZone
+                            );
+
+
+                            afficherParcellesZone(
+                                nomZone,
+                                layer
+                            );
+
+                        }
+                    );
+
+                }
+
+            }
+        );
+
+
+        zonesLayer.addTo(map);
+
+
+        // ------------------------------------------------
+        // AJUSTER LA CARTE À BÉJA
+        // ------------------------------------------------
+
+        try {
+
+            map.fitBounds(
+                zonesLayer.getBounds()
+            );
+
+        } catch(e) {
+
+            console.warn(
+                "Impossible d'ajuster les bounds"
+            );
+
+        }
+
+    }
+
+
+    // ============================================================
+    // TROUVER LE NOM DE LA ZONE
+    // ============================================================
+
+    function obtenirNomZone(props) {
+
+        // Ton ancien code utilisait ADM2_NAME
+
+        if (props.ADM2_NAME)
+            return props.ADM2_NAME;
+
+
+        if (props.ADM2NAME)
+            return props.ADM2NAME;
+
+
+        if (props.NAME_2)
+            return props.NAME_2;
+
+
+        if (props.name)
+            return props.name;
+
+
+        if (props.NAME)
+            return props.NAME;
+
+
+        // Affichage pour debug
+
+        return "Zone inconnue";
+
+    }
+
+
+    // ============================================================
+    // AFFICHER LES PARCELLES D'UNE ZONE
+    // ============================================================
+
+    function afficherParcellesZone(
+        nomZone,
+        coucheZone
+    ) {
+
+        console.log(
+            "================================="
+        );
+
+        console.log(
+            "ZONE SÉLECTIONNÉE :",
+            nomZone
+        );
+
+
+        // ------------------------------------------------
+        // Réinitialiser ancienne zone
+        // ------------------------------------------------
+
+        if (
+            zoneActive &&
+            zoneActive !== coucheZone
+        ) {
+
+            zoneActive.setStyle({
+
+                fillOpacity: 0.02,
+
+                weight: 1
+
+            });
+
+        }
+
+
+        zoneActive = coucheZone;
+
+
+        coucheZone.setStyle({
+
+            fillOpacity: 0.10,
+
+            weight: 3,
+
+            color: '#1976D2'
+
+        });
+
+
+        // ------------------------------------------------
+        // Supprimer anciennes parcelles
+        // ------------------------------------------------
+
+        parcellesLayer.clearLayers();
+
+
+        // ------------------------------------------------
+        // Zoom
+        // ------------------------------------------------
+
+        map.flyToBounds(
+            coucheZone.getBounds(),
+            {
+
+                duration: 1.2,
+
+                easeLinearity: 0.25,
+
+                padding: [20, 20]
+
+            }
+        );
+
+
+        // ------------------------------------------------
+        // TROUVER LES PARCELLES
+        // ------------------------------------------------
+
+        const parcellesZone =
+            trouverParcellesDansZone(
+                nomZone,
+                coucheZone.feature
+            );
+
+
+        console.log(
+            "Parcelles trouvées :",
+            parcellesZone.length
+        );
+
+
+        parcellesZone.forEach(
+            (parcelle, index) => {
+
+                ajouterParcelle(
+                    parcelle,
+                    nomZone,
+                    index
+                );
+
+            }
+        );
+
+
+        // ------------------------------------------------
+        // INFO
+        // ------------------------------------------------
+
+        document
+            .getElementById('zone-info')
+            .style.display = 'block';
+
+
+        document
+            .getElementById('zone-name')
+            .textContent = nomZone;
+
+
+        document
+            .getElementById('zone-count')
+            .textContent =
+                parcellesZone.length;
+
+
+        if (
+            parcellesZone.length === 0
+        ) {
+
+            console.warn(
+                "⚠️ Aucune parcelle trouvée pour :",
+                nomZone
+            );
+
+            console.warn(
+                "Vérifie les noms des zones et les coordonnées."
+            );
+
+        }
+
+    }
+
+
+    // ============================================================
+    // TROUVER LES PARCELLES
+    // ============================================================
+
+    function trouverParcellesDansZone(
+        nomZone,
+        featureZone
+    ) {
+
+        // ------------------------------------------------
+        // MÉTHODE 1 :
+        // Si resultats.json contient déjà zone
+        // ------------------------------------------------
+
+        const avecZone =
+            parcelles.filter(
+                p => {
+
+                    return (
+                        p.zone &&
+                        normaliser(
+                            p.zone
+                        ) ===
+                        normaliser(
+                            nomZone
+                        )
+                    );
+
+                }
+            );
+
+
+        if (
+            avecZone.length > 0
+        ) {
+
+            console.log(
+                "Association par zone trouvée :",
+                avecZone.length
+            );
+
+            return appliquerFiltre(
+                avecZone
+            );
+
+        }
+
+
+        // ------------------------------------------------
+        // MÉTHODE 2 :
+        // Association géographique
+        // ------------------------------------------------
+
+        console.log(
+            "Association par coordonnées..."
+        );
+
+
+        const resultats =
+            parcelles.filter(
+                p => {
+
+                    const lat =
+                        Number(p.lat);
+
+                    const lon =
+                        Number(p.lon);
+
+
+                    if (
+                        !Number.isFinite(lat) ||
+                        !Number.isFinite(lon)
+                    ) {
+
+                        return false;
+
+                    }
+
+
+                    return pointDansGeoJSON(
+                        lon,
+                        lat,
+                        featureZone
+                    );
+
+                }
+            );
+
+
+        console.log(
+            "Association géographique :",
+            resultats.length
+        );
+
+
+        return appliquerFiltre(
+            resultats
+        );
+
+    }
+
+
+    // ============================================================
+    // NORMALISATION
+    // ============================================================
+
+    function normaliser(value) {
+
+        return String(value || '')
+            .normalize('NFD')
+            .replace(
+                /[\u0300-\u036f]/g,
+                ''
+            )
+            .trim()
+            .toLowerCase();
+
+    }
+
+
+    // ============================================================
+    // POINT DANS POLYGONE
+    // ============================================================
+
+    function pointDansGeoJSON(
+        lon,
+        lat,
+        feature
+    ) {
+
+        if (!feature)
+            return false;
+
+
+        const geometry =
+            feature.geometry;
+
+
+        if (!geometry)
+            return false;
+
+
+        if (
+            geometry.type ===
+            'Polygon'
+        ) {
+
+            return pointDansPolygon(
+                [lon, lat],
+                geometry.coordinates
+            );
+
+        }
+
+
+        if (
+            geometry.type ===
+            'MultiPolygon'
+        ) {
+
+            return geometry.coordinates.some(
+                polygon =>
+
+                    pointDansPolygon(
+                        [lon, lat],
+                        polygon
+                    )
+
+            );
+
+        }
+
+
+        return false;
+
+    }
+
+
+    // ============================================================
+    // POINT DANS POLYGONE
+    // ============================================================
+
+    function pointDansPolygon(
+        point,
+        polygon
+    ) {
+
+        // Anneau extérieur
+
+        if (
+            pointDansAnneau(
+                point,
+                polygon[0]
+            ) === false
+        ) {
+
+            return false;
+
+        }
+
+
+        // Trous éventuels
+
+        for (
+            let i = 1;
+            i < polygon.length;
+            i++
+        ) {
+
+            if (
+                pointDansAnneau(
+                    point,
+                    polygon[i]
+                )
+            ) {
+
+                return false;
+
+            }
+
+        }
+
+
+        return true;
+
+    }
+
+
+    // ============================================================
+    // POINT DANS ANNEAU
+    // ============================================================
+
+    function pointDansAnneau(
+        point,
+        ring
+    ) {
+
+        const x = point[0];
+
+        const y = point[1];
+
+
+        let inside = false;
+
+
+        for (
+            let i = 0,
+            j = ring.length - 1;
+
+            i < ring.length;
+
+            j = i++
+        ) {
+
+            const xi = ring[i][0];
+
+            const yi = ring[i][1];
+
+            const xj = ring[j][0];
+
+            const yj = ring[j][1];
+
+
+            const intersect =
+
+                (
+                    yi > y
+                ) !==
+                (
+                    yj > y
+                )
+
+                &&
+
+                (
+                    x <
+                    (xj - xi) *
+                    (y - yi) /
+                    (yj - yi) +
+                    xi
+                );
+
+
+            if (
+                intersect
+            ) {
+
+                inside = !inside;
+
+            }
+
+        }
+
+
+        return inside;
+
+    }
+
+
+    // ============================================================
+    // AJOUTER UNE PARCELLE
+    // ============================================================
+
+    function ajouterParcelle(
+        parcelle,
+        nomZone,
+        index
+    ) {
+
+        let couleur;
+
+
+        const mode =
+            document
+                .getElementById(
+                    'mode-selector'
+                )
+                .value;
+
+
+        if (
+            mode === 'comparaison'
+        ) {
+
+            couleur =
+                getCouleurComparaison(
+                    parcelle
+                );
+
+        }
+
+        else if (
+            mode === 'gee'
+        ) {
+
+            couleur =
+                getCouleurGEE(
+                    parcelle
+                );
+
+        }
+
+        else {
+
+            couleur =
+                getCouleurCopernicus(
+                    parcelle
+                );
+
+        }
+
+
+        // ------------------------------------------------
+        // Rectangle
+        // ------------------------------------------------
+
+        const rectangle =
+            L.rectangle(
+
+                [
+                    [
+                        parcelle.lat_min,
+                        parcelle.lon_min
+                    ],
+
+                    [
+                        parcelle.lat_max,
+                        parcelle.lon_max
+                    ]
+                ],
+
+                {
+
+                    color: couleur,
+
+                    weight: 1,
+
+                    fillColor: couleur,
+
+                    fillOpacity:
+                        parcelle.gee.anomalie ||
+                        parcelle.copernicus.anomalie
+                            ? 0.70
+                            : 0.30
+
+                }
+
+            );
+
+
+        rectangle.bindPopup(
+            creerPopup(
+                parcelle,
+                nomZone
+            )
+        );
+
+
+        rectangle.bindTooltip(
+            parcelle.parcel_id
+        );
+
+
+        rectangle.addTo(
+            parcellesLayer
+        );
+
+    }
+
+
+    // ============================================================
+    // FILTRE
+    // ============================================================
+
+    function appliquerFiltre(
+        liste
+    ) {
+
+        const filtre =
+            document
+                .getElementById(
+                    'filter-selector'
+                )
+                .value;
+
+
+        return liste.filter(
+            parcelle => {
+
+                if (
+                    filtre === 'accord'
+                ) {
+
+                    return parcelle
+                        .comparaison
+                        .accord;
+
+                }
+
+
+                if (
+                    filtre === 'divergence'
+                ) {
+
+                    return !parcelle
+                        .comparaison
+                        .accord;
+
+                }
+
+
+                if (
+                    filtre === 'anomalies'
+                ) {
+
+                    return (
+                        parcelle.gee.anomalie ||
+                        parcelle.copernicus.anomalie
+                    );
+
+                }
+
+
+                return true;
+
+            }
+        );
+
+    }
+
+
+    // ============================================================
+    // COULEURS
+    // ============================================================
+
+    function getCouleurComparaison(
+        p
+    ) {
+
+        return p.comparaison.couleur;
+
+    }
+
+
+    function getCouleurGEE(
+        p
+    ) {
+
+        if (
+            !p.gee.anomalie
+        ) {
+
+            return '#4CAF50';
+
+        }
+
+
+        const couleurs = {
+
+            'Faible': '#FFD700',
+
+            'Modéré': '#FFC107',
+
+            'Élevé': '#FF9800',
+
+            'Critique': '#F44336'
+
+        };
+
+
+        return couleurs[
+            p.gee.criticite
+        ] || '#757575';
+
+    }
+
+
+    function getCouleurCopernicus(
+        p
+    ) {
+
+        if (
+            !p.copernicus.anomalie
+        ) {
+
+            return '#4CAF50';
+
+        }
+
+
+        const couleurs = {
+
+            'Faible': '#FFD700',
+
+            'Modéré': '#FFC107',
+
+            'Élevé': '#FF9800',
+
+            'Critique': '#F44336'
+
+        };
+
+
+        return couleurs[
+            p.copernicus.criticite
+        ] || '#757575';
+
+    }
+
+
+    // ============================================================
+    // POPUP
+    // ============================================================
+
+    function creerPopup(
+        p,
+        zone
+    ) {
+
+        const gee = p.gee;
+
+        const cop = p.copernicus;
+
+        const comp = p.comparaison;
+
+
+        return `
+
+            <div class="popup-title">
+
+                📍 ${p.parcel_id}
+
+            </div>
+
+
+            <div style="margin-bottom:10px;">
+
+                <strong>
+                    📍 Délégation :
+                </strong>
+
+                ${zone}
+
+            </div>
+
+
+            <div class="popup-grid">
+
+
+                <div class="popup-col">
+
+                    <h4>
+                        🛰️ Google Earth Engine
+                    </h4>
+
+
+                    <br>
+
+
+                    <span class="popup-badge
+                        ${gee.anomalie
+                            ? 'badge-anomalie'
+                            : 'badge-normal'}">
+
+                        ${gee.anomalie
+                            ? '⚠️ Anomalie'
+                            : '✅ Normal'}
+
+                    </span>
+
+
+                    <br><br>
+
+                    <strong>
+                        Z-score :
+                    </strong>
+
+                    ${Number(
+                        gee.z_score
+                    ).toFixed(3)}
+
+                    <br>
+
+                    <strong>
+                        Type :
+                    </strong>
+
+                    ${gee.type_anomalie}
+
+                    <br>
+
+                    <strong>
+                        Criticité :
+                    </strong>
+
+                    ${gee.criticite}
+
+                </div>
+
+
+                <div class="popup-col">
+
+                    <h4>
+                        🌍 Copernicus
+                    </h4>
+
+
+                    <br>
+
+
+                    <span class="popup-badge
+                        ${cop.anomalie
+                            ? 'badge-anomalie'
+                            : 'badge-normal'}">
+
+                        ${cop.anomalie
+                            ? '⚠️ Anomalie'
+                            : '✅ Normal'}
+
+                    </span>
+
+
+                    <br><br>
+
+                    <strong>
+                        Z-score :
+                    </strong>
+
+                    ${Number(
+                        cop.z_score
+                    ).toFixed(3)}
+
+                    <br>
+
+                    <strong>
+                        Type :
+                    </strong>
+
+                    ${cop.type_anomalie}
+
+                    <br>
+
+                    <strong>
+                        Criticité :
+                    </strong>
+
+                    ${cop.criticite}
+
+                </div>
+
+            </div>
+
+
+            <div style="
+                margin-top:15px;
+                padding:12px;
+                background:#f9f9f9;
+                border-left:4px solid #2196F3;
+            ">
+
+                <h4>
+                    🔍 Analyse de concordance
+                </h4>
+
+
+                <br>
+
+
+                <span class="popup-badge
+                    ${comp.accord
+                        ? 'badge-accord'
+                        : (
+                            comp.difference_z_score > 1
+                            ? 'badge-divergence-forte'
+                            : 'badge-divergence'
+                        )
+                    }">
+
+                    ${comp.accord
+                        ? '✅ Accord'
+                        : '⚠️ Divergence'}
+
+                </span>
+
+
+                <br><br>
+
+
+                <strong>
+                    Δ Z-score :
+                </strong>
+
+                ${Number(
+                    comp.difference_z_score
+                ).toFixed(3)}
+
+                <br>
+
+
+                <strong>
+                    Confiance :
+                </strong>
+
+                ${comp.confiance}
+
+                <br>
+
+
+                <strong>
+                    Verdict :
+                </strong>
+
+                ${comp.label}
+
+            </div>
+
+        `;
+
+    }
+
+
+    // ============================================================
+    // STATS
+    // ============================================================
+
+    function mettreAJourStats() {
+
+        const total =
+            parcelles.length;
+
+
+        const accord =
+            parcelles.filter(
+                p =>
+                    p.comparaison.accord
+            ).length;
+
+
+        const divergence =
+            total - accord;
+
+
+        const taux =
+            total > 0
+                ? (
+                    100 *
+                    accord /
+                    total
+                ).toFixed(1)
+                : 0;
+
+
+        document
+            .getElementById(
+                'stat-total'
+            )
+            .textContent = total;
+
+
+        document
+            .getElementById(
+                'stat-accord'
+            )
+            .textContent =
+                taux + '%';
+
+
+        document
+            .getElementById(
+                'stat-divergence'
+            )
+            .textContent =
+                divergence;
+
+    }
+
+
+    // ============================================================
+    // LÉGENDE
+    // ============================================================
+
+    function mettreAJourLegende() {
+
+        const mode =
+            document
+                .getElementById(
+                    'mode-selector'
+                )
+                .value;
+
+
+        let html = '';
+
+
+        if (
+            mode === 'comparaison'
+        ) {
+
+            html = `
+
+                <div class="legend-item">
+
+                    <span
+                        class="legend-color"
+                        style="background:#8BC34A">
+                    </span>
+
+                    Accord - Normal
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span
+                        class="legend-color"
+                        style="background:#4CAF50">
+                    </span>
+
+                    Accord - Anomalie
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span
+                        class="legend-color"
+                        style="background:#FFC107">
+                    </span>
+
+                    Divergence légère
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span
+                        class="legend-color"
+                        style="background:#F44336">
+                    </span>
+
+                    Divergence forte
+
+                </div>
+
+            `;
+
+        }
+
+        else {
+
+            html = `
+
+                <div class="legend-item">
+
+                    <span
+                        class="legend-color"
+                        style="background:#4CAF50">
+                    </span>
+
+                    Normal
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span
+                        class="legend-color"
+                        style="background:#FFD700">
+                    </span>
+
+                    Anomalie faible
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span
+                        class="legend-color"
+                        style="background:#FFC107">
+                    </span>
+
+                    Anomalie modérée
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span
+                        class="legend-color"
+                        style="background:#FF9800">
+                    </span>
+
+                    Anomalie élevée
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span
+                        class="legend-color"
+                        style="background:#F44336">
+                    </span>
+
+                    Anomalie critique
+
+                </div>
+
+            `;
+
+        }
+
+
+        document
+            .getElementById(
+                'legend-content'
+            )
+            .innerHTML = html;
+
+    }
+
+
+    // ============================================================
+    // CHANGEMENT DE MODE
+    // ============================================================
+
+    document
+        .getElementById(
+            'mode-selector'
+        )
+        .addEventListener(
+            'change',
+            function() {
+
+                mettreAJourLegende();
+
+
+                if (
+                    zoneActive
+                ) {
+
+                    afficherParcellesZone(
+
+                        obtenirNomZone(
+                            zoneActive.feature.properties
+                        ),
+
+                        zoneActive
+
+                    );
+
+                }
+
+            }
+        );
+
+
+    // ============================================================
+    // CHANGEMENT DE FILTRE
+    // ============================================================
+
+    document
+        .getElementById(
+            'filter-selector'
+        )
+        .addEventListener(
+            'change',
+            function() {
+
+                if (
+                    zoneActive
+                ) {
+
+                    afficherParcellesZone(
+
+                        obtenirNomZone(
+                            zoneActive.feature.properties
+                        ),
+
+                        zoneActive
+
+                    );
+
+                }
+
+            }
+        );
+
+</script>
+
+</body>
+</html>

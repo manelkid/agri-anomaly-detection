@@ -1,0 +1,61 @@
+services:
+
+  # ==========================================================
+  # API FASTAPI
+  # ==========================================================
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+
+    container_name: agri-anomaly-api
+
+    ports:
+      - "8000:8000"
+
+    env_file:
+      - ./config/.env
+
+    restart: unless-stopped
+
+
+  # ==========================================================
+  # FRONTEND
+  # ==========================================================
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+
+    container_name: agri-anomaly-frontend
+
+    ports:
+      - "8081:8080"
+
+    depends_on:
+      - api
+
+    restart: unless-stopped
+
+
+  # ==========================================================
+  # COPERNICUS
+  # ==========================================================
+  copernicus:
+    build:
+      context: .
+      dockerfile: copernicus/Dockerfile
+
+    container_name: agri-anomaly-copernicus
+
+    env_file:
+      - ./config/.env
+
+    volumes:
+      - ./copernicus/data:/app/data
+
+    depends_on:
+      - api
+
+    profiles:
+      - data

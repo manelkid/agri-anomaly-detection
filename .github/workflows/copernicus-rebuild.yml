@@ -1,0 +1,54 @@
+name: Reconstruction des données Copernicus
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  rebuild:
+    name: Reconstruire les données
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer les dépendances
+        run: |
+          pip install -r copernicus/requirements.txt
+
+      - name: Authentification Copernicus
+        env:
+          COPERNICUS_CLIENT_ID: ${{ secrets.COPERNICUS_CLIENT_ID }}
+          COPERNICUS_CLIENT_SECRET: ${{ secrets.COPERNICUS_CLIENT_SECRET }}
+        run: |
+          echo "Authentification Copernicus configurée"
+
+      - name: Extraction Copernicus
+        env:
+          COPERNICUS_CLIENT_ID: ${{ secrets.COPERNICUS_CLIENT_ID }}
+          COPERNICUS_CLIENT_SECRET: ${{ secrets.COPERNICUS_CLIENT_SECRET }}
+        run: |
+          cd copernicus
+          python copernicus_extraction.py
+
+      - name: Compléter les données
+        run: |
+          cd copernicus
+          python completer_donnees.py
+
+      - name: Comparer GEE et Copernicus
+        run: |
+          cd copernicus
+          python comparer_sources.py
+
+      - name: Générer les données frontend
+        run: |
+          cd copernicus
+          python generer_donnees_frontend.py
