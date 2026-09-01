@@ -49,3 +49,126 @@ class InfoModele(BaseModel):
     latent_dim: int
     z_seuil: float
     avertissement: str
+
+# ============================================================
+# SCHÉMAS POUR LA COMPARAISON GEE vs COPERNICUS
+# ============================================================
+
+class PredictionSource(BaseModel):
+    """
+    Prédiction avec identification de la source satellite.
+    
+    Utilisé dans les réponses de comparaison pour distinguer clairement
+    les résultats obtenus à partir de Google Earth Engine vs Copernicus.
+    """
+    source: str = Field(..., example="Google Earth Engine (COPERNICUS/S2_SR_HARMONIZED)")
+    anomalie: bool = Field(..., example=False)
+    z_score: float = Field(..., example=1.234)
+    type_anomalie: str = Field(..., example="Normal")
+    criticite: str = Field(..., example="Faible")
+    erreur_reconstruction: float = Field(..., example=0.0156)
+
+
+class ComparisonRequest(BaseModel):
+    """
+    Requête de comparaison entre deux sources satellite indépendantes.
+    
+    Permet de valider la robustesse du modèle en comparant les prédictions
+    obtenues à partir de :
+    - Google Earth Engine (COPERNICUS/S2_SR_HARMONIZED)
+    - Copernicus Data Space Ecosystem (Statistical API)
+    
+    Les deux séries temporelles doivent avoir la même longueur (idéalement
+    12 mois pour une année complète). Cette route est utile pour :
+    - Détecter d'éventuels artefacts spécifiques à une source
+    - Augmenter la confiance dans le diagnostic (concordance = forte fiabilité)
+    - Identifier les cas ambigus nécessitant une vérification terrain
+    """
+    parcel_id: str = Field(..., example="P0042")
+    timeseries_gee: SerieTemporelle
+    timeseries_copernicus: SerieTemporelle
+    
+    class Config:
+        schema_extra = {
+            "example": {
+                "parcel_id": "P0042",
+                "timeseries_gee": {
+                    "parcel_id": "P0042",
+                    "ndvi": [0.45, 0.48, 0.52, 0.58, 0.62, 0.65, 0.61, 0.55, 0.48, 0.42, 0.38, 0.35],
+                    "evi": [0.32, 0.35, 0.38, 0.42, 0.45, 0.48, 0.44, 0.39, 0.34, 0.30, 0.27, 0.25],
+                    "ndmi": [0.21, 0.24, 0.27, 0.31, 0.34, 0.37, 0.33, 0.28, 0.23, 0.19, 0.16, 0.14]
+                },
+                "timeseries_copernicus": {
+                    "parcel_id": "P0042",
+                    "ndvi": [0.46, 0.49, 0.53, 0.59, 0.63, 0.66, 0.62, 0.56, 0.49, 0.43, 0.39, 0.36],
+                    "evi": [0.33, 0.36, 0.39, 0.43, 0.46, 0.49, 0.45, 0.40, 0.35, 0.31, 0.28, 0.26],
+                    "ndmi": [0.22, 0.25, 0.28, 0.32, 0.35, 0.38, 0.34, 0.29, 0.24, 0.20, 0.17, 0.15]
+                }
+            }
+        }
+
+
+class ComparisonResponse(BaseModel):
+    """
+    Résultat détaillé de la comparaison entre deux sources satellite.
+    
+    Contient :
+    - Les deux prédictions (GEE et Copernicus) avec leurs diagnostics respectifs
+    - L'analyse de concordance (accord/divergence sur le diagnostic d'anomalie)
+    - Les corrélations des séries brutes (coefficient de Pearson pour chaque indice)
+    - Les différences moyennes absolues (MAE) entre les deux séries
+    - Un verdict synthétique avec niveau de confiance et recommandation d'action
+    
+    Interprétation du verdict :
+    - "Excellent accord" + Confiance "Très élevée" → Diagnostic fiable, action possible
+    - "Divergence significative" + Confiance "Faible" → Vérification terrain nécessaire
+    """
+    parcel_id: str = Field(..., example="P0042")
+    
+    # Prédictions des deux sources
+    prediction_gee: PredictionSource
+    prediction_copernicus: PredictionSource
+    
+    # Analyse de concordance
+    concordance: bool = Field(
+        ..., 
+        example=True,
+        description="True si les deux sources détectent le même type (anomalie ou normal)"
+    )
+    difference_z_score: float = Field(
+        ..., 
+        example=0.036,
+        description="Valeur absolue de la différence entre les deux Z-scores"
+    )
+    
+    # Corrélations des séries brutes (Pearson)
+    correlation_ndvi: float = Field(..., example=0.998, ge=-1, le=1)
+    correlation_evi: float = Field(..., example=0.997, ge=-1, le=1)
+    correlation_ndmi: float = Field(..., example=0.996, ge=-1, le=1)
+    
+    # Différences moyennes absolues (MAE)
+    mae_ndvi: float = Field(..., example=0.0083, description="Erreur moyenne absolue NDVI")
+    mae_evi: float = Field(..., example=0.0067, description="Erreur moyenne absolue EVI")
+    mae_ndmi: float = Field(..., example=0.0058, description="Erreur moyenne absolue NDMI")
+    
+    # Synthèse et recommandation
+    verdict: str = Field(
+        ..., 
+        example="Excellent accord entre les deux sources",
+        description="Évaluation qualitative de la concordance"
+    )
+    confiance: str = Field(
+        ..., 
+        example="Très élevée",
+        description="Niveau de confiance : Très élevée, Élevée, Modérée, Faible, Très faible"
+    )
+    qualite_correlation: str = Field(
+        ..., 
+        example="Excellente (> 0.9)",
+        description="Qualité de la corrélation moyenne entre les séries"
+    )
+    recommandation: str = Field(
+        ..., 
+        example="Les deux sources confirment le diagnostic. Confiance maximale.",
+        description="Recommandation d'action basée sur la concordance"
+    )
