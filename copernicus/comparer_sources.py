@@ -14,8 +14,7 @@ Usage : python comparer_sources.py
 import pandas as pd
 import requests
 
-API_URL = "http://api:8000/predict"
-
+API_URL = "http://localhost:8000/predict"
 GEE_CSV = "data/donnees_parcelles_2025.csv"
 COPERNICUS_CSV = "data/copernicus_donnees_completes.csv"
 

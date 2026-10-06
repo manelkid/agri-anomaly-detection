@@ -1,334 +1,334 @@
 parcel_id,anomalie_GEE,cause_GEE,z_GEE,anomalie_Copernicus,cause_Copernicus,z_Copernicus,ACCORD
-P0000,False,Normal,-0.448,False,Normal,0.3,OUI
-P0001,False,Normal,0.16,False,Normal,0.453,OUI
-P0002,False,Normal,-0.62,False,Normal,1.208,OUI
-P0003,False,Normal,1.401,True,Donnée suspecte,3.036,NON
-P0004,False,Normal,-0.355,False,Normal,-0.166,OUI
-P0005,False,Normal,-0.512,False,Normal,0.466,OUI
-P0006,False,Normal,-0.396,False,Normal,0.202,OUI
-P0007,False,Normal,-0.587,False,Normal,1.846,OUI
-P0008,False,Normal,-0.504,False,Normal,0.219,OUI
-P0009,False,Normal,-1.147,False,Normal,1.066,OUI
-P0010,False,Normal,0.368,False,Normal,1.668,OUI
-P0011,False,Normal,-0.042,True,Anomalie légère,3.691,NON
-P0012,False,Normal,0.121,True,Anomalie légère,2.931,NON
-P0013,False,Normal,-1.153,False,Normal,-0.449,OUI
-P0014,False,Normal,-0.186,False,Normal,0.456,OUI
-P0015,False,Normal,-0.355,False,Normal,0.073,OUI
-P0016,False,Normal,-0.4,False,Normal,-0.247,OUI
-P0017,False,Normal,-0.828,False,Normal,1.043,OUI
-P0018,False,Normal,-0.421,True,Anomalie légère,3.339,NON
-P0019,False,Normal,-0.347,False,Normal,0.712,OUI
-P0020,False,Normal,0.443,False,Normal,1.352,OUI
-P0021,False,Normal,0.27,False,Normal,0.743,OUI
-P0022,False,Normal,0.16,False,Normal,0.801,OUI
-P0023,False,Normal,1.87,False,Normal,-0.789,OUI
-P0024,False,Normal,-0.05,False,Normal,0.076,OUI
-P0025,False,Normal,0.066,True,Donnée suspecte,6.492,NON
-P0026,False,Normal,-0.278,False,Normal,1.791,OUI
-P0027,False,Normal,-0.173,True,Donnée suspecte,2.087,NON
-P0028,False,Normal,-0.288,False,Normal,0.217,OUI
-P0029,False,Normal,-0.527,False,Normal,1.215,OUI
-P0030,False,Normal,0.215,True,Donnée suspecte,3.17,NON
-P0031,False,Normal,-0.351,False,Normal,-0.493,OUI
-P0032,False,Normal,-0.563,False,Normal,-0.494,OUI
-P0033,False,Normal,-1.227,True,Anomalie légère,3.793,NON
-P0034,False,Normal,0.134,False,Normal,1.409,OUI
-P0035,False,Normal,1.527,False,Normal,1.16,OUI
-P0036,False,Normal,1.975,True,Donnée suspecte,5.442,NON
-P0037,False,Normal,-0.622,False,Normal,0.307,OUI
-P0038,False,Normal,-1.095,False,Normal,-0.128,OUI
-P0039,False,Normal,1.789,False,Normal,-0.27,OUI
-P0040,False,Normal,0.067,False,Normal,-0.068,OUI
-P0041,False,Normal,-0.049,False,Normal,0.97,OUI
-P0045,False,Normal,-0.412,False,Normal,0.742,OUI
-P0050,False,Normal,-1.175,True,Anomalie légère,2.491,NON
-P0055,False,Normal,-0.755,False,Normal,-0.242,OUI
-P0061,False,Normal,0.947,False,Normal,1.473,OUI
-P0066,False,Normal,0.116,False,Normal,0.539,OUI
-P0071,False,Normal,-0.138,False,Normal,-1.51,OUI
-P0077,False,Normal,0.069,False,Normal,1.138,OUI
-P0082,False,Normal,-0.044,False,Normal,-0.523,OUI
-P0088,False,Normal,-0.498,False,Normal,-0.235,OUI
-P0091,False,Normal,-0.138,True,Donnée suspecte,5.13,NON
-P0093,False,Normal,-0.95,False,Normal,-0.681,OUI
-P0096,False,Normal,-1.065,False,Normal,-1.242,OUI
-P0098,False,Normal,0.606,False,Normal,1.911,OUI
-P0101,False,Normal,-0.633,False,Normal,1.851,OUI
-P0103,False,Normal,-0.187,False,Normal,0.865,OUI
-P0106,False,Normal,-1.091,False,Normal,-0.92,OUI
-P0108,False,Normal,-0.695,False,Normal,-1.442,OUI
-P0110,False,Normal,-1.077,True,Anomalie légère,3.713,NON
-P0113,False,Normal,-1.263,True,Anomalie légère,2.088,NON
-P0114,False,Normal,-1.09,False,Normal,0.369,OUI
-P0117,False,Normal,-1.188,False,Normal,-0.658,OUI
-P0119,False,Normal,1.6,False,Normal,1.94,OUI
-P0121,False,Normal,-0.177,False,Normal,0.614,OUI
-P0124,False,Normal,-0.108,False,Normal,0.799,OUI
-P0126,False,Normal,0.14,False,Normal,0.057,OUI
-P0128,False,Normal,0.099,False,Normal,0.413,OUI
-P0131,False,Normal,-0.498,False,Normal,0.388,OUI
-P0133,False,Normal,0.353,True,Anomalie légère,2.115,NON
-P0136,False,Normal,0.626,False,Normal,0.929,OUI
-P0138,False,Normal,0.85,False,Normal,1.528,OUI
-P0140,False,Normal,-0.466,False,Normal,0.285,OUI
-P0143,False,Normal,-0.56,False,Normal,-0.212,OUI
-P0145,False,Normal,-0.437,False,Normal,-0.315,OUI
-P0147,False,Normal,-0.026,False,Normal,0.321,OUI
-P0150,False,Normal,-0.343,False,Normal,0.476,OUI
-P0152,False,Normal,-0.973,False,Normal,0.361,OUI
-P0154,False,Normal,0.665,False,Normal,0.658,OUI
-P0157,False,Normal,-1.031,False,Normal,0.441,OUI
-P0159,False,Normal,0.438,False,Normal,1.691,OUI
-P0162,False,Normal,0.585,False,Normal,-0.17,OUI
-P0164,False,Normal,-0.169,False,Normal,0.975,OUI
-P0167,False,Normal,-0.37,False,Normal,0.32,OUI
-P0169,False,Normal,-0.101,False,Normal,1.948,OUI
-P0172,False,Normal,0.031,False,Normal,0.551,OUI
-P0174,False,Normal,-0.601,True,Anomalie légère,5.989,NON
-P0177,False,Normal,-0.495,False,Normal,1.199,OUI
-P0179,False,Normal,-0.422,False,Normal,0.884,OUI
-P0182,False,Normal,-1.023,False,Normal,-0.256,OUI
-P0184,False,Normal,0.706,False,Normal,0.957,OUI
-P0187,False,Normal,0.061,False,Normal,1.596,OUI
-P0189,False,Normal,1.086,False,Normal,1.761,OUI
-P0192,False,Normal,0.483,True,Donnée suspecte,2.953,NON
-P0194,False,Normal,0.075,False,Normal,1.943,OUI
-P0197,True,Anomalie légère,3.247,False,Normal,-0.225,NON
-P0199,False,Normal,-0.775,False,Normal,0.023,OUI
-P0202,False,Normal,1.089,True,Anomalie légère,2.593,NON
-P0204,False,Normal,-0.027,False,Normal,-0.004,OUI
-P0207,False,Normal,0.609,False,Normal,0.649,OUI
-P0210,False,Normal,-0.371,False,Normal,0.568,OUI
-P0212,False,Normal,-0.443,True,Anomalie légère,2.585,NON
-P0215,False,Normal,-0.71,False,Normal,-1.097,OUI
-P0217,False,Normal,-0.649,False,Normal,1.093,OUI
-P0219,False,Normal,-0.891,False,Normal,-1.024,OUI
-P0222,True,Anomalie légère,2.73,True,Anomalie légère,3.514,OUI
-P0223,False,Normal,-0.077,False,Normal,0.751,OUI
-P0226,False,Normal,0.392,False,Normal,1.716,OUI
-P0228,False,Normal,-1.269,False,Normal,-0.177,OUI
-P0230,False,Normal,-0.302,True,Donnée suspecte,6.588,NON
-P0233,False,Normal,-0.207,False,Normal,1.912,OUI
-P0235,False,Normal,-0.734,False,Normal,0.285,OUI
-P0238,False,Normal,-0.654,False,Normal,0.556,OUI
-P0240,False,Normal,-0.0,False,Normal,-0.343,OUI
-P0242,False,Normal,-0.225,False,Normal,0.129,OUI
-P0244,False,Normal,0.077,False,Normal,0.737,OUI
-P0247,False,Normal,-0.603,False,Normal,0.451,OUI
-P0249,True,Anomalie légère,2.325,True,Donnée suspecte,4.309,OUI
-P0251,False,Normal,-1.075,False,Normal,0.09,OUI
-P0254,False,Normal,-0.126,False,Normal,0.172,OUI
-P0256,False,Normal,-0.348,False,Normal,0.788,OUI
-P0259,True,Anomalie légère,3.575,False,Normal,1.724,NON
-P0261,False,Normal,-0.193,False,Normal,1.384,OUI
-P0264,False,Normal,-0.612,True,Anomalie légère,2.089,NON
-P0266,False,Normal,0.726,True,Anomalie légère,2.968,NON
-P0269,False,Normal,-0.484,False,Normal,1.844,OUI
-P0271,False,Normal,0.115,False,Normal,1.21,OUI
-P0274,False,Normal,0.406,True,Anomalie légère,6.032,NON
-P0276,False,Normal,0.295,False,Normal,0.495,OUI
-P0279,True,Anomalie légère,3.229,True,Anomalie légère,3.482,OUI
-P0281,False,Normal,0.169,False,Normal,1.444,OUI
-P0284,True,Anomalie légère,3.216,False,Normal,1.678,NON
-P0286,False,Normal,-0.556,False,Normal,-0.009,OUI
-P0288,False,Normal,0.016,False,Normal,1.945,OUI
-P0291,False,Normal,-0.434,False,Normal,0.296,OUI
-P0293,False,Normal,0.774,True,Anomalie légère,2.487,NON
-P0296,False,Normal,0.706,False,Normal,-0.38,OUI
-P0298,False,Normal,-0.974,True,Anomalie légère,4.728,NON
-P0300,False,Normal,0.228,False,Normal,1.648,OUI
-P0303,False,Normal,-0.165,False,Normal,0.9,OUI
-P0305,False,Normal,-1.041,False,Normal,-0.874,OUI
-P0307,False,Normal,-0.532,True,Anomalie légère,2.249,NON
-P0309,False,Normal,-0.816,True,Donnée suspecte,15.542,NON
-P0312,False,Normal,1.763,False,Normal,1.207,OUI
-P0317,False,Normal,-0.47,False,Normal,0.67,OUI
-P0323,False,Normal,-0.072,False,Normal,-0.305,OUI
-P0328,False,Normal,-0.404,False,Normal,0.533,OUI
-P0333,False,Normal,-1.152,False,Normal,1.912,OUI
-P0337,False,Normal,-0.253,False,Normal,-0.611,OUI
-P0339,False,Normal,0.509,False,Normal,-1.31,OUI
-P0341,False,Normal,0.377,False,Normal,1.773,OUI
-P0343,False,Normal,0.882,False,Normal,0.404,OUI
-P0346,False,Normal,-0.542,False,Normal,0.22,OUI
-P0349,False,Normal,0.272,True,Donnée suspecte,2.984,NON
-P0351,False,Normal,-0.84,False,Normal,-0.085,OUI
-P0352,False,Normal,-0.598,False,Normal,0.462,OUI
-P0353,False,Normal,-0.291,False,Normal,-1.21,OUI
-P0354,False,Normal,-0.128,False,Normal,0.758,OUI
-P0355,False,Normal,1.233,False,Normal,1.285,OUI
-P0356,False,Normal,-0.19,True,Anomalie légère,5.657,NON
-P0357,False,Normal,-0.393,False,Normal,0.534,OUI
-P0359,False,Normal,0.072,False,Normal,0.829,OUI
-P0362,False,Normal,-1.23,False,Normal,1.804,OUI
-P0365,False,Normal,0.031,False,Normal,-0.645,OUI
-P0367,False,Normal,-0.418,False,Normal,-0.467,OUI
-P0370,False,Normal,0.261,True,Vigueur anormalement élevée,6.855,NON
-P0372,True,Anomalie légère,2.741,True,Anomalie légère,5.508,OUI
-P0375,False,Normal,0.502,False,Normal,0.502,OUI
-P0377,False,Normal,-0.233,False,Normal,-0.617,OUI
-P0378,False,Normal,0.016,False,Normal,0.43,OUI
-P0379,False,Normal,-0.168,False,Normal,0.43,OUI
-P0380,False,Normal,1.193,False,Normal,1.492,OUI
-P0381,False,Normal,1.805,True,Donnée suspecte,7.913,NON
-P0382,False,Normal,1.084,False,Normal,1.653,OUI
-P0383,False,Normal,1.304,False,Normal,-0.147,OUI
-P0384,False,Normal,-0.472,False,Normal,-0.389,OUI
-P0385,False,Normal,-0.357,False,Normal,0.391,OUI
-P0386,False,Normal,0.989,False,Normal,0.23,OUI
-P0387,False,Normal,-0.821,False,Normal,-0.696,OUI
-P0388,False,Normal,-0.418,False,Normal,0.475,OUI
-P0389,False,Normal,0.248,False,Normal,0.675,OUI
-P0390,False,Normal,-0.453,False,Normal,-0.126,OUI
-P0391,False,Normal,-0.183,False,Normal,-0.616,OUI
-P0392,False,Normal,0.11,False,Normal,0.311,OUI
-P0393,False,Normal,-1.229,False,Normal,-1.019,OUI
-P0394,False,Normal,-0.672,False,Normal,-0.533,OUI
-P0395,False,Normal,-0.303,False,Normal,-0.051,OUI
-P0396,False,Normal,-0.361,False,Normal,-0.07,OUI
-P0397,False,Normal,1.509,False,Normal,0.182,OUI
-P0398,False,Normal,-0.736,False,Normal,-0.681,OUI
-P0399,False,Normal,-0.088,False,Normal,-0.103,OUI
-P0400,False,Normal,0.165,False,Normal,1.15,OUI
-P0401,False,Normal,-0.702,False,Normal,-1.126,OUI
-P0402,False,Normal,1.259,False,Normal,1.294,OUI
-P0403,False,Normal,0.655,False,Normal,1.312,OUI
-P0404,False,Normal,0.298,False,Normal,-0.181,OUI
-P0405,False,Normal,-0.071,False,Normal,-0.254,OUI
-P0406,False,Normal,-1.235,False,Normal,-1.131,OUI
-P0407,False,Normal,-0.812,True,Anomalie légère,2.182,NON
-P0408,False,Normal,1.017,False,Normal,0.783,OUI
-P0409,True,Anomalie légère,2.356,True,Anomalie légère,3.543,OUI
-P0410,False,Normal,0.13,False,Normal,1.044,OUI
-P0411,False,Normal,-0.64,False,Normal,-0.599,OUI
-P0412,False,Normal,-0.351,False,Normal,-0.204,OUI
-P0413,False,Normal,-0.375,False,Normal,-0.234,OUI
-P0414,False,Normal,-0.004,False,Normal,0.654,OUI
-P0415,False,Normal,-1.155,False,Normal,-0.544,OUI
-P0416,False,Normal,1.746,True,Anomalie légère,3.226,NON
-P0417,False,Normal,-0.206,False,Normal,1.502,OUI
-P0418,False,Normal,-0.771,False,Normal,0.657,OUI
-P0419,False,Normal,0.235,False,Normal,0.301,OUI
-P0420,False,Normal,0.283,False,Normal,0.818,OUI
-P0421,False,Normal,0.409,False,Normal,1.326,OUI
-P0422,False,Normal,-0.08,False,Normal,-0.085,OUI
-P0423,False,Normal,-1.362,False,Normal,-0.847,OUI
-P0424,False,Normal,0.208,True,Anomalie légère,2.618,NON
-P0425,False,Normal,0.205,False,Normal,0.231,OUI
-P0426,False,Normal,-1.035,False,Normal,0.22,OUI
-P0427,True,Anomalie légère,2.192,True,Anomalie légère,2.004,OUI
-P0428,False,Normal,-0.106,True,Anomalie légère,3.2,NON
-P0429,False,Normal,-0.859,False,Normal,-0.571,OUI
-P0430,False,Normal,0.143,False,Normal,1.447,OUI
-P0431,False,Normal,0.008,False,Normal,0.418,OUI
-P0432,False,Normal,-0.206,False,Normal,0.504,OUI
-P0433,False,Normal,0.458,True,Anomalie légère,2.059,NON
-P0434,False,Normal,0.197,False,Normal,-0.324,OUI
-P0435,False,Normal,0.409,False,Normal,-0.246,OUI
-P0436,False,Normal,1.311,True,Donnée suspecte,3.909,NON
-P0437,False,Normal,-0.604,False,Normal,-0.488,OUI
-P0438,True,Anomalie légère,2.964,False,Normal,0.589,NON
-P0439,True,Anomalie légère,3.126,True,Anomalie légère,2.144,OUI
-P0440,False,Normal,-0.484,False,Normal,-0.673,OUI
-P0441,False,Normal,1.313,False,Normal,1.373,OUI
-P0442,True,Anomalie légère,2.279,False,Normal,-0.262,NON
-P0443,False,Normal,0.208,False,Normal,1.031,OUI
-P0445,False,Normal,-0.833,False,Normal,0.792,OUI
-P0448,False,Normal,-0.978,False,Normal,0.461,OUI
-P0450,False,Normal,-0.029,False,Normal,1.086,OUI
-P0453,False,Normal,-0.546,False,Normal,-0.272,OUI
-P0456,False,Normal,-0.692,False,Normal,-1.764,OUI
-P0458,False,Normal,-0.377,False,Normal,0.746,OUI
-P0460,False,Normal,-1.043,False,Normal,-0.931,OUI
-P0463,False,Normal,-0.697,False,Normal,-0.05,OUI
-P0465,False,Normal,-1.084,True,Anomalie légère,2.297,NON
-P0468,False,Normal,-1.291,False,Normal,-0.659,OUI
-P0470,False,Normal,-0.548,False,Normal,0.44,OUI
-P0472,False,Normal,-0.388,False,Normal,0.91,OUI
-P0475,False,Normal,1.535,False,Normal,0.231,OUI
-P0477,False,Normal,0.876,False,Normal,0.904,OUI
-P0480,False,Normal,0.147,False,Normal,0.784,OUI
-P0482,False,Normal,-0.65,False,Normal,0.087,OUI
-P0485,False,Normal,0.186,False,Normal,1.518,OUI
-P0487,False,Normal,-0.132,False,Normal,0.361,OUI
-P0489,False,Normal,-0.783,True,Donnée suspecte,2.954,NON
-P0492,False,Normal,-0.713,False,Normal,1.22,OUI
-P0494,False,Normal,0.884,True,Anomalie légère,2.13,NON
-P0496,False,Normal,0.292,True,Donnée suspecte,3.085,NON
-P0499,True,Anomalie légère,3.121,True,Anomalie légère,4.496,OUI
-P0502,False,Normal,-0.987,False,Normal,0.369,OUI
-P0504,False,Normal,-1.047,False,Normal,-0.826,OUI
-P0506,False,Normal,0.005,True,Donnée suspecte,4.071,NON
-P0509,False,Normal,-0.02,False,Normal,-0.684,OUI
-P0511,False,Normal,-0.407,False,Normal,0.336,OUI
-P0514,False,Normal,1.494,False,Normal,1.973,OUI
-P0516,False,Normal,1.562,True,Anomalie légère,2.326,NON
-P0518,False,Normal,1.037,False,Normal,1.963,OUI
-P0521,False,Normal,0.762,False,Normal,0.269,OUI
-P0523,False,Normal,-0.842,False,Normal,0.279,OUI
-P0526,False,Normal,-0.272,False,Normal,1.279,OUI
-P0529,False,Normal,1.767,True,Anomalie légère,2.042,NON
-P0531,False,Normal,0.395,False,Normal,-0.762,OUI
-P0533,False,Normal,-0.685,False,Normal,0.814,OUI
-P0535,False,Normal,-0.609,False,Normal,-0.041,OUI
-P0538,True,Anomalie légère,3.948,True,Sécheresse,8.112,OUI
-P0540,False,Normal,-0.59,False,Normal,0.685,OUI
-P0543,False,Normal,-0.496,False,Normal,-0.1,OUI
-P0545,False,Normal,-0.574,True,Anomalie légère,6.407,NON
-P0548,False,Normal,-0.808,False,Normal,-0.193,OUI
-P0550,False,Normal,-0.605,True,Donnée suspecte,5.388,NON
-P0553,False,Normal,-1.044,False,Normal,-0.264,OUI
-P0557,False,Normal,0.398,False,Normal,0.521,OUI
-P0562,True,Anomalie légère,3.349,True,Anomalie légère,2.364,OUI
-P0567,False,Normal,-0.246,False,Normal,0.586,OUI
-P0573,False,Normal,-0.654,False,Normal,0.365,OUI
-P0578,False,Normal,-0.153,False,Normal,-0.415,OUI
-P0583,False,Normal,-1.114,False,Normal,-0.063,OUI
-P0588,False,Normal,-0.331,True,Anomalie légère,2.216,NON
-P0593,False,Normal,0.007,False,Normal,1.743,OUI
-P0598,False,Normal,-0.196,True,Donnée suspecte,6.879,NON
-P0604,False,Normal,0.017,False,Normal,-0.744,OUI
-P0609,False,Normal,-0.672,False,Normal,-0.028,OUI
-P0614,False,Normal,1.989,True,Vigueur anormalement élevée,6.657,NON
-P0619,True,Anomalie légère,2.11,True,Anomalie légère,6.207,OUI
-P0625,False,Normal,-0.299,False,Normal,0.466,OUI
-P0630,False,Normal,-0.795,False,Normal,0.969,OUI
-P0635,False,Normal,-0.44,False,Normal,0.412,OUI
-P0640,False,Normal,0.448,False,Normal,0.462,OUI
-P0646,False,Normal,-0.773,False,Normal,1.625,OUI
-P0651,False,Normal,-0.762,False,Normal,0.469,OUI
-P0656,False,Normal,-0.159,False,Normal,1.214,OUI
-P0662,False,Normal,-0.484,False,Normal,0.239,OUI
-P0665,False,Normal,-0.55,False,Normal,-0.966,OUI
-P0668,False,Normal,0.209,False,Normal,0.487,OUI
-P0670,False,Normal,0.014,False,Normal,0.867,OUI
-P0672,False,Normal,1.607,True,Anomalie légère,2.402,NON
-P0675,False,Normal,0.453,False,Normal,0.389,OUI
-P0678,False,Normal,-0.219,False,Normal,0.549,OUI
-P0680,False,Normal,-0.829,False,Normal,1.425,OUI
-P0683,False,Normal,-0.729,True,Anomalie légère,3.677,NON
-P0685,False,Normal,-0.694,True,Donnée suspecte,2.972,NON
-P0688,False,Normal,0.248,False,Normal,-0.162,OUI
-P0690,False,Normal,-0.916,False,Normal,-0.603,OUI
-P0692,False,Normal,0.085,False,Normal,1.158,OUI
-P0696,False,Normal,0.864,False,Normal,1.101,OUI
-P0702,False,Normal,-0.746,False,Normal,1.502,OUI
-P0707,False,Normal,-0.021,False,Normal,1.797,OUI
-P0711,False,Normal,-1.509,False,Normal,-1.404,OUI
-P0716,False,Normal,-0.028,False,Normal,0.432,OUI
-P0721,False,Normal,0.146,False,Normal,0.941,OUI
-P0727,False,Normal,-0.543,False,Normal,-0.896,OUI
-P0731,False,Normal,0.505,False,Normal,-0.219,OUI
-P0736,False,Normal,0.107,False,Normal,-0.643,OUI
-P0742,False,Normal,0.179,False,Normal,1.061,OUI
-P0747,False,Normal,1.609,True,Anomalie légère,2.829,NON
-P0752,False,Normal,0.059,False,Normal,0.5,OUI
-P0757,False,Normal,-0.692,False,Normal,-0.954,OUI
-P0762,False,Normal,-1.31,True,Anomalie légère,2.159,NON
-P0768,False,Normal,-0.643,False,Normal,-0.186,OUI
-P0773,False,Normal,0.447,False,Normal,1.42,OUI
-P0778,False,Normal,-1.248,False,Normal,0.844,OUI
-P0784,False,Normal,-0.038,False,Normal,0.075,OUI
-P0789,False,Normal,1.098,False,Normal,1.305,OUI
-P0794,True,Anomalie légère,2.234,False,Normal,0.09,NON
+P0000,False,Normal,-0.694,False,Normal,-0.422,OUI
+P0001,False,Normal,0.261,False,Normal,0.948,OUI
+P0002,False,Normal,-1.72,False,Normal,1.119,OUI
+P0003,False,Normal,0.955,True,Donnée suspecte,5.008,NON
+P0004,False,Normal,-0.51,False,Normal,0.191,OUI
+P0005,False,Normal,-1.465,False,Normal,-0.435,OUI
+P0006,False,Normal,-0.291,False,Normal,-0.373,OUI
+P0007,False,Normal,0.14,False,Normal,0.515,OUI
+P0008,False,Normal,-0.659,False,Normal,0.593,OUI
+P0009,False,Normal,-0.282,False,Normal,0.155,OUI
+P0010,False,Normal,-0.018,True,Anomalie légère,3.145,NON
+P0011,False,Normal,-0.015,True,Anomalie légère,2.385,NON
+P0012,False,Normal,-0.571,True,Anomalie légère,7.505,NON
+P0013,False,Normal,-0.644,False,Normal,-1.135,OUI
+P0014,False,Normal,-0.459,False,Normal,-0.227,OUI
+P0015,False,Normal,-0.643,False,Normal,0.643,OUI
+P0016,False,Normal,-1.394,False,Normal,-1.422,OUI
+P0017,False,Normal,-1.222,False,Normal,-0.054,OUI
+P0018,False,Normal,-0.431,True,Anomalie légère,2.963,NON
+P0019,False,Normal,-0.749,False,Normal,0.536,OUI
+P0020,False,Normal,0.174,False,Normal,1.155,OUI
+P0021,False,Normal,-0.718,False,Normal,-0.191,OUI
+P0022,False,Normal,-0.495,False,Normal,-0.507,OUI
+P0023,False,Normal,0.479,False,Normal,0.297,OUI
+P0024,False,Normal,-0.902,False,Normal,-0.381,OUI
+P0025,False,Normal,-0.609,True,Donnée suspecte,3.017,NON
+P0026,False,Normal,-0.627,False,Normal,0.595,OUI
+P0027,False,Normal,-0.432,True,Donnée suspecte,3.207,NON
+P0028,False,Normal,-1.321,False,Normal,0.38,OUI
+P0029,False,Normal,-1.748,False,Normal,0.956,OUI
+P0030,False,Normal,-0.426,False,Normal,0.562,OUI
+P0031,False,Normal,-0.043,False,Normal,0.231,OUI
+P0032,False,Normal,-1.522,False,Normal,0.39,OUI
+P0033,True,Anomalie légère,2.509,True,Anomalie légère,11.229,OUI
+P0034,False,Normal,-0.12,False,Normal,1.659,OUI
+P0035,False,Normal,1.676,True,Anomalie légère,2.544,NON
+P0036,False,Normal,0.61,True,Donnée suspecte,5.463,NON
+P0037,False,Normal,-0.513,False,Normal,-0.097,OUI
+P0038,False,Normal,-1.339,False,Normal,-0.943,OUI
+P0039,False,Normal,0.53,False,Normal,-1.462,OUI
+P0040,False,Normal,-0.29,False,Normal,-0.885,OUI
+P0041,False,Normal,-0.214,False,Normal,0.607,OUI
+P0045,False,Normal,-1.237,False,Normal,0.476,OUI
+P0050,False,Normal,-0.822,True,Anomalie légère,4.247,NON
+P0055,False,Normal,-0.647,False,Normal,0.21,OUI
+P0061,False,Normal,0.41,True,Anomalie légère,2.536,NON
+P0066,False,Normal,0.452,False,Normal,0.856,OUI
+P0071,False,Normal,-0.387,False,Normal,-1.106,OUI
+P0077,False,Normal,-0.792,False,Normal,0.459,OUI
+P0082,False,Normal,-1.026,False,Normal,-1.078,OUI
+P0088,False,Normal,-1.634,False,Normal,0.16,OUI
+P0091,False,Normal,-0.928,True,Donnée suspecte,2.027,NON
+P0093,False,Normal,-1.771,False,Normal,-1.492,OUI
+P0096,False,Normal,-1.159,False,Normal,-0.193,OUI
+P0098,False,Normal,0.098,True,Anomalie légère,4.129,NON
+P0101,False,Normal,-0.606,True,Anomalie légère,3.384,NON
+P0103,False,Normal,-0.542,False,Normal,0.186,OUI
+P0106,False,Normal,-0.056,False,Normal,0.76,OUI
+P0108,False,Normal,0.025,False,Normal,-0.375,OUI
+P0110,False,Normal,-1.698,False,Normal,0.547,OUI
+P0113,False,Normal,-0.763,False,Normal,1.392,OUI
+P0114,False,Normal,1.937,False,Normal,0.978,OUI
+P0117,False,Normal,-1.616,False,Normal,-2.027,OUI
+P0119,False,Normal,-0.17,True,Anomalie légère,2.182,NON
+P0121,False,Normal,-1.264,False,Normal,0.176,OUI
+P0124,False,Normal,-0.455,False,Normal,1.021,OUI
+P0126,False,Normal,-0.897,False,Normal,-0.43,OUI
+P0128,False,Normal,-0.726,False,Normal,0.711,OUI
+P0131,False,Normal,-0.458,False,Normal,0.162,OUI
+P0133,False,Normal,0.131,True,Anomalie légère,2.547,NON
+P0136,False,Normal,0.652,False,Normal,1.242,OUI
+P0138,False,Normal,0.125,False,Normal,1.104,OUI
+P0140,False,Normal,-1.882,False,Normal,-0.378,OUI
+P0143,False,Normal,-0.905,False,Normal,-0.48,OUI
+P0145,False,Normal,-0.657,False,Normal,1.248,OUI
+P0147,False,Normal,-0.724,False,Normal,0.14,OUI
+P0150,False,Normal,-0.582,False,Normal,-0.607,OUI
+P0152,False,Normal,-0.95,False,Normal,0.41,OUI
+P0154,False,Normal,0.004,False,Normal,0.866,OUI
+P0157,False,Normal,-0.709,False,Normal,-0.85,OUI
+P0159,False,Normal,-0.048,False,Normal,1.673,OUI
+P0162,False,Normal,0.334,False,Normal,0.374,OUI
+P0164,False,Normal,-0.403,False,Normal,0.256,OUI
+P0167,False,Normal,-1.725,False,Normal,0.518,OUI
+P0169,False,Normal,-0.348,False,Normal,0.414,OUI
+P0172,False,Normal,0.794,False,Normal,0.733,OUI
+P0174,False,Normal,-0.214,True,Anomalie légère,5.356,NON
+P0177,False,Normal,-1.51,False,Normal,0.773,OUI
+P0179,False,Normal,-1.234,False,Normal,-1.436,OUI
+P0182,False,Normal,-1.436,False,Normal,-1.149,OUI
+P0184,False,Normal,0.151,False,Normal,0.724,OUI
+P0187,False,Normal,-0.427,False,Normal,1.788,OUI
+P0189,False,Normal,0.995,False,Normal,1.842,OUI
+P0192,False,Normal,1.451,True,Donnée suspecte,4.102,NON
+P0194,False,Normal,-0.51,True,Anomalie légère,2.784,NON
+P0197,False,Normal,1.325,False,Normal,-0.958,OUI
+P0199,False,Normal,-1.041,False,Normal,0.663,OUI
+P0202,False,Normal,0.612,False,Normal,1.957,OUI
+P0204,False,Normal,-0.679,False,Normal,-0.971,OUI
+P0207,False,Normal,-0.07,False,Normal,0.502,OUI
+P0210,False,Normal,-1.058,False,Normal,1.413,OUI
+P0212,False,Normal,-0.613,False,Normal,0.185,OUI
+P0215,False,Normal,-2.173,False,Normal,0.627,OUI
+P0217,False,Normal,0.246,True,Anomalie légère,2.45,NON
+P0219,False,Normal,-1.539,False,Normal,-0.738,OUI
+P0222,False,Normal,0.967,True,Anomalie légère,3.843,NON
+P0223,False,Normal,-0.541,False,Normal,0.731,OUI
+P0226,False,Normal,0.122,False,Normal,1.766,OUI
+P0228,False,Normal,-0.099,True,Anomalie légère,2.188,NON
+P0230,False,Normal,-1.483,True,Donnée suspecte,10.038,NON
+P0233,False,Normal,-0.499,False,Normal,1.082,OUI
+P0235,False,Normal,-0.38,False,Normal,0.441,OUI
+P0238,False,Normal,-0.725,False,Normal,-0.875,OUI
+P0240,False,Normal,-0.466,True,Anomalie légère,2.31,NON
+P0242,False,Normal,-0.511,False,Normal,-0.059,OUI
+P0244,False,Normal,-0.514,False,Normal,0.461,OUI
+P0247,False,Normal,-1.293,False,Normal,1.337,OUI
+P0249,False,Normal,1.169,True,Donnée suspecte,3.813,NON
+P0251,False,Normal,-1.334,False,Normal,0.102,OUI
+P0254,False,Normal,-0.416,False,Normal,0.086,OUI
+P0256,False,Normal,0.098,True,Donnée suspecte,2.323,NON
+P0259,False,Normal,1.349,False,Normal,0.299,OUI
+P0261,False,Normal,-1.055,False,Normal,0.82,OUI
+P0264,False,Normal,-1.436,True,Anomalie légère,2.484,NON
+P0266,False,Normal,0.252,False,Normal,1.012,OUI
+P0269,False,Normal,-0.824,False,Normal,1.353,OUI
+P0271,False,Normal,-0.436,False,Normal,1.046,OUI
+P0274,False,Normal,0.641,True,Anomalie légère,13.158,NON
+P0276,False,Normal,0.047,False,Normal,0.137,OUI
+P0279,True,Anomalie légère,3.018,True,Anomalie légère,2.304,OUI
+P0281,False,Normal,-0.728,True,Anomalie légère,2.002,NON
+P0284,False,Normal,0.847,False,Normal,1.441,OUI
+P0286,False,Normal,-0.266,False,Normal,0.034,OUI
+P0288,False,Normal,-0.08,True,Anomalie légère,7.275,NON
+P0291,False,Normal,-1.058,False,Normal,-0.779,OUI
+P0293,False,Normal,0.675,True,Anomalie légère,3.64,NON
+P0296,False,Normal,1.044,False,Normal,0.663,OUI
+P0298,False,Normal,-1.005,True,Anomalie légère,3.703,NON
+P0300,False,Normal,-0.145,False,Normal,1.753,OUI
+P0303,False,Normal,-0.757,False,Normal,1.501,OUI
+P0305,False,Normal,-0.795,False,Normal,0.887,OUI
+P0307,False,Normal,-0.582,True,Anomalie légère,2.487,NON
+P0309,False,Normal,0.032,True,Donnée suspecte,17.401,NON
+P0312,False,Normal,1.407,False,Normal,1.463,OUI
+P0317,False,Normal,-0.969,False,Normal,0.2,OUI
+P0323,False,Normal,-0.174,False,Normal,0.955,OUI
+P0328,False,Normal,-1.46,False,Normal,-0.282,OUI
+P0333,False,Normal,-1.015,True,Anomalie légère,7.329,NON
+P0337,False,Normal,-0.937,False,Normal,-0.629,OUI
+P0339,False,Normal,-0.439,False,Normal,-1.165,OUI
+P0341,False,Normal,-0.119,False,Normal,1.677,OUI
+P0343,False,Normal,0.215,False,Normal,1.682,OUI
+P0346,False,Normal,-0.928,False,Normal,-0.857,OUI
+P0349,False,Normal,0.66,True,Donnée suspecte,3.534,NON
+P0351,False,Normal,-1.638,False,Normal,-0.029,OUI
+P0352,False,Normal,-0.605,False,Normal,-0.149,OUI
+P0353,False,Normal,-1.511,False,Normal,-0.806,OUI
+P0354,False,Normal,-0.519,False,Normal,0.193,OUI
+P0355,False,Normal,0.988,False,Normal,1.728,OUI
+P0356,False,Normal,-0.431,True,Anomalie légère,2.137,NON
+P0357,False,Normal,-1.034,False,Normal,0.082,OUI
+P0359,False,Normal,0.047,False,Normal,1.032,OUI
+P0362,False,Normal,0.353,True,Anomalie légère,2.755,NON
+P0365,False,Normal,-0.284,False,Normal,0.75,OUI
+P0367,False,Normal,-0.393,False,Normal,-0.117,OUI
+P0370,False,Normal,-0.202,True,Vigueur anormalement élevée,5.982,NON
+P0372,False,Normal,1.962,True,Anomalie légère,4.615,NON
+P0375,False,Normal,-0.056,False,Normal,0.136,OUI
+P0377,False,Normal,-0.466,False,Normal,0.32,OUI
+P0378,False,Normal,-0.108,False,Normal,-0.522,OUI
+P0379,False,Normal,0.069,False,Normal,0.691,OUI
+P0380,False,Normal,-0.485,False,Normal,1.257,OUI
+P0381,False,Normal,1.585,True,Donnée suspecte,11.421,NON
+P0382,True,Anomalie légère,5.281,True,Anomalie légère,7.632,OUI
+P0383,False,Normal,0.527,False,Normal,-0.997,OUI
+P0384,False,Normal,-1.289,False,Normal,-0.507,OUI
+P0385,False,Normal,-1.041,False,Normal,0.14,OUI
+P0386,False,Normal,0.378,False,Normal,-0.073,OUI
+P0387,False,Normal,-1.301,False,Normal,-0.02,OUI
+P0388,False,Normal,-0.528,False,Normal,-0.02,OUI
+P0389,False,Normal,-0.524,False,Normal,0.444,OUI
+P0390,False,Normal,-0.727,False,Normal,-0.991,OUI
+P0391,False,Normal,-0.385,False,Normal,0.38,OUI
+P0392,False,Normal,-0.421,False,Normal,0.428,OUI
+P0393,False,Normal,-1.946,False,Normal,0.62,OUI
+P0394,False,Normal,-0.681,False,Normal,1.393,OUI
+P0395,False,Normal,-0.873,False,Normal,-0.796,OUI
+P0396,False,Normal,-0.826,False,Normal,-0.051,OUI
+P0397,False,Normal,1.225,False,Normal,0.412,OUI
+P0398,False,Normal,-1.306,False,Normal,-1.809,OUI
+P0399,False,Normal,-0.246,False,Normal,1.344,OUI
+P0400,False,Normal,0.294,False,Normal,-0.188,OUI
+P0401,False,Normal,-0.767,False,Normal,-1.404,OUI
+P0402,False,Normal,1.465,False,Normal,1.652,OUI
+P0403,False,Normal,0.606,False,Normal,1.605,OUI
+P0404,False,Normal,0.164,False,Normal,-0.17,OUI
+P0405,False,Normal,-0.778,False,Normal,-1.069,OUI
+P0406,False,Normal,-1.044,False,Normal,-0.316,OUI
+P0407,False,Normal,-1.088,True,Anomalie légère,2.452,NON
+P0408,False,Normal,1.336,False,Normal,1.468,OUI
+P0409,False,Normal,0.665,True,Anomalie légère,3.726,NON
+P0410,False,Normal,-0.712,False,Normal,1.046,OUI
+P0411,False,Normal,-1.255,False,Normal,-1.024,OUI
+P0412,False,Normal,-1.252,False,Normal,-0.809,OUI
+P0413,False,Normal,0.098,False,Normal,-0.74,OUI
+P0414,False,Normal,-0.787,False,Normal,0.601,OUI
+P0415,False,Normal,-0.605,False,Normal,-1.955,OUI
+P0416,False,Normal,1.526,False,Normal,1.783,OUI
+P0417,False,Normal,-0.516,True,Anomalie légère,2.624,NON
+P0418,False,Normal,-0.161,False,Normal,1.007,OUI
+P0419,False,Normal,0.531,False,Normal,0.128,OUI
+P0420,False,Normal,-0.226,False,Normal,0.056,OUI
+P0421,False,Normal,-0.378,False,Normal,1.647,OUI
+P0422,False,Normal,-0.427,False,Normal,-0.361,OUI
+P0423,False,Normal,-1.329,False,Normal,-0.243,OUI
+P0424,False,Normal,-0.205,True,Anomalie légère,3.216,NON
+P0425,False,Normal,-0.245,False,Normal,-0.203,OUI
+P0426,False,Normal,-1.662,False,Normal,-0.187,OUI
+P0427,False,Normal,1.953,True,Anomalie légère,3.661,NON
+P0428,False,Normal,-0.426,True,Anomalie légère,3.307,NON
+P0429,False,Normal,-1.533,False,Normal,-1.252,OUI
+P0430,False,Normal,-0.434,False,Normal,0.885,OUI
+P0431,False,Normal,0.269,False,Normal,-0.222,OUI
+P0432,False,Normal,-0.06,False,Normal,1.124,OUI
+P0433,False,Normal,-0.02,True,Anomalie légère,2.625,NON
+P0434,False,Normal,0.759,True,Anomalie légère,2.019,NON
+P0435,False,Normal,-0.628,False,Normal,-0.949,OUI
+P0436,False,Normal,1.151,True,Donnée suspecte,5.393,NON
+P0437,False,Normal,-1.728,False,Normal,0.039,OUI
+P0438,False,Normal,0.899,False,Normal,0.722,OUI
+P0439,True,Anomalie légère,3.396,True,Anomalie légère,3.586,OUI
+P0440,False,Normal,-0.463,False,Normal,0.565,OUI
+P0441,False,Normal,0.547,False,Normal,1.512,OUI
+P0442,False,Normal,0.187,False,Normal,-1.091,OUI
+P0443,False,Normal,-0.165,False,Normal,1.337,OUI
+P0445,False,Normal,0.255,False,Normal,0.675,OUI
+P0448,False,Normal,-1.72,False,Normal,-0.583,OUI
+P0450,False,Normal,0.4,True,Anomalie légère,2.159,NON
+P0453,False,Normal,-1.778,False,Normal,-0.939,OUI
+P0456,False,Normal,-1.943,False,Normal,-0.807,OUI
+P0458,False,Normal,-1.608,False,Normal,1.351,OUI
+P0460,False,Normal,-1.327,False,Normal,-0.404,OUI
+P0463,False,Normal,-0.269,False,Normal,1.262,OUI
+P0465,False,Normal,-1.504,False,Normal,0.17,OUI
+P0468,False,Normal,-1.373,False,Normal,0.385,OUI
+P0470,False,Normal,-1.035,False,Normal,0.874,OUI
+P0472,False,Normal,-0.782,False,Normal,1.513,OUI
+P0475,True,Anomalie légère,2.177,False,Normal,1.085,NON
+P0477,False,Normal,0.417,False,Normal,1.233,OUI
+P0480,False,Normal,-0.009,False,Normal,-0.065,OUI
+P0482,False,Normal,-0.047,False,Normal,-0.256,OUI
+P0485,False,Normal,-0.04,True,Donnée suspecte,2.634,NON
+P0487,False,Normal,-0.051,False,Normal,-0.147,OUI
+P0489,False,Normal,-0.712,True,Donnée suspecte,9.756,NON
+P0492,False,Normal,-0.395,False,Normal,1.065,OUI
+P0494,True,Anomalie légère,2.658,True,Anomalie légère,2.776,OUI
+P0496,False,Normal,-0.385,True,Donnée suspecte,3.868,NON
+P0499,True,Anomalie légère,2.373,True,Anomalie légère,6.065,OUI
+P0502,False,Normal,-1.106,False,Normal,-0.324,OUI
+P0504,False,Normal,0.079,False,Normal,1.173,OUI
+P0506,False,Normal,0.21,True,Donnée suspecte,5.355,NON
+P0509,False,Normal,0.052,False,Normal,0.182,OUI
+P0511,False,Normal,-1.032,False,Normal,-0.11,OUI
+P0514,False,Normal,1.544,True,Anomalie légère,3.059,NON
+P0516,True,Anomalie légère,3.651,True,Anomalie légère,6.069,OUI
+P0518,False,Normal,0.701,False,Normal,1.013,OUI
+P0521,False,Normal,0.526,False,Normal,-0.041,OUI
+P0523,False,Normal,-0.991,False,Normal,1.266,OUI
+P0526,False,Normal,-1.039,False,Normal,1.708,OUI
+P0529,False,Normal,1.324,True,Anomalie légère,3.493,NON
+P0531,False,Normal,0.106,False,Normal,-1.096,OUI
+P0533,False,Normal,-0.297,False,Normal,1.606,OUI
+P0535,False,Normal,-0.095,False,Normal,-0.65,OUI
+P0538,True,Anomalie légère,4.749,True,Sécheresse,9.5,OUI
+P0540,False,Normal,-1.141,False,Normal,0.619,OUI
+P0543,False,Normal,-1.564,False,Normal,-1.559,OUI
+P0545,False,Normal,-0.195,True,Anomalie légère,3.442,NON
+P0548,False,Normal,-1.644,False,Normal,-1.193,OUI
+P0550,False,Normal,1.631,True,Donnée suspecte,17.31,NON
+P0553,False,Normal,-1.503,False,Normal,-2.186,OUI
+P0557,False,Normal,0.103,False,Normal,0.314,OUI
+P0562,True,Anomalie légère,3.726,True,Anomalie légère,2.332,OUI
+P0567,False,Normal,-0.972,False,Normal,-0.111,OUI
+P0573,False,Normal,-1.003,False,Normal,1.114,OUI
+P0578,False,Normal,0.021,False,Normal,-1.009,OUI
+P0583,False,Normal,-1.362,False,Normal,-1.821,OUI
+P0588,False,Normal,-0.702,True,Anomalie légère,4.928,NON
+P0593,False,Normal,-0.643,True,Donnée suspecte,2.081,NON
+P0598,False,Normal,-0.514,True,Donnée suspecte,6.252,NON
+P0604,False,Normal,-0.561,False,Normal,-0.546,OUI
+P0609,False,Normal,-1.715,False,Normal,-0.875,OUI
+P0614,False,Normal,-1.182,True,Vigueur anormalement élevée,3.732,NON
+P0619,False,Normal,1.722,True,Anomalie légère,6.324,NON
+P0625,False,Normal,-1.89,False,Normal,-0.549,OUI
+P0630,False,Normal,-1.782,False,Normal,1.28,OUI
+P0635,False,Normal,-0.96,False,Normal,0.734,OUI
+P0640,False,Normal,-1.075,False,Normal,-0.949,OUI
+P0646,False,Normal,1.673,True,Anomalie légère,2.358,NON
+P0651,False,Normal,-1.563,False,Normal,0.96,OUI
+P0656,False,Normal,-0.089,False,Normal,1.148,OUI
+P0662,False,Normal,-0.832,False,Normal,-0.1,OUI
+P0665,False,Normal,-1.165,False,Normal,-0.177,OUI
+P0668,False,Normal,-0.022,False,Normal,0.204,OUI
+P0670,False,Normal,-0.279,False,Normal,0.704,OUI
+P0672,False,Normal,0.81,False,Normal,1.104,OUI
+P0675,False,Normal,0.257,False,Normal,1.62,OUI
+P0678,False,Normal,-0.808,True,Anomalie légère,3.234,NON
+P0680,False,Normal,-0.218,False,Normal,0.46,OUI
+P0683,False,Normal,0.169,True,Anomalie légère,6.297,NON
+P0685,False,Normal,0.361,True,Donnée suspecte,4.129,NON
+P0688,False,Normal,-0.254,False,Normal,-0.531,OUI
+P0690,False,Normal,-0.543,False,Normal,-0.893,OUI
+P0692,False,Normal,-0.758,False,Normal,0.729,OUI
+P0696,False,Normal,0.482,False,Normal,1.709,OUI
+P0702,False,Normal,0.302,True,Anomalie légère,8.287,NON
+P0707,False,Normal,-0.659,False,Normal,1.848,OUI
+P0711,False,Normal,-1.038,False,Normal,-1.043,OUI
+P0716,False,Normal,-0.674,False,Normal,-0.406,OUI
+P0721,False,Normal,-0.095,False,Normal,0.511,OUI
+P0727,False,Normal,-0.477,False,Normal,-0.579,OUI
+P0731,False,Normal,0.28,False,Normal,-0.23,OUI
+P0736,False,Normal,-0.286,False,Normal,0.251,OUI
+P0742,False,Normal,-0.322,False,Normal,1.426,OUI
+P0747,False,Normal,1.541,False,Normal,1.306,OUI
+P0752,False,Normal,-0.671,False,Normal,-0.531,OUI
+P0757,False,Normal,0.16,False,Normal,-1.571,OUI
+P0762,False,Normal,-1.31,True,Anomalie légère,4.247,NON
+P0768,False,Normal,-0.914,False,Normal,-0.647,OUI
+P0773,False,Normal,0.108,False,Normal,1.433,OUI
+P0778,False,Normal,0.681,False,Normal,-1.084,OUI
+P0784,False,Normal,-0.724,False,Normal,-0.116,OUI
+P0789,False,Normal,-0.194,False,Normal,1.396,OUI
+P0794,False,Normal,0.138,False,Normal,0.001,OUI
